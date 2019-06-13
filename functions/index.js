@@ -15,13 +15,13 @@ const uuid = require('uuid/v4');
 // });
 const gcconfig = {
   projectId: 'flutter-products-d11e6',
-  keyFilename: 'flutter-products.json'
+  keyFilename: 'flutter-products-d11e6.json'
 };
 
-const { Storage } = require('@google-cloud/storage');
+const gcs = require('@google-cloud/storage')(gcconfig);
 
 fbAdmin.initializeApp({
-  credential: fbAdmin.credential.cert(require('./flutter-products.json'))
+  credential: fbAdmin.credential.cert(require('./flutter-products-d11e6.json'))
 });
 
 exports.storeImage = functions.https.onRequest((req, res) => {
