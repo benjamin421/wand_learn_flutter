@@ -59,7 +59,7 @@ mixin ProductsModel on ConnectedProductsModel {
     return _showFavorites;
   }
 
-  Future<Map<String, String>> uploadImage(File image,
+  Future<Map<String, dynamic>> uploadImage(File image,
       {String imagePath}) async {
     final mimeTypeData = lookupMimeType(image.path).split('/');
     final imageUploadRequest = http.MultipartRequest(
@@ -69,21 +69,23 @@ mixin ProductsModel on ConnectedProductsModel {
     final file = await http.MultipartFile.fromPath(
       'image',
       image.path,
-      contentType: MediaType(mimeTypeData[0], mimeTypeData[1]),
+      contentType: MediaType(
+        mimeTypeData[0],
+        mimeTypeData[1],
+      ),
     );
     imageUploadRequest.files.add(file);
     if (imagePath != null) {
       imageUploadRequest.fields['imagePath'] = Uri.encodeComponent(imagePath);
     }
-    imageUploadRequest.headers['Authrization'] =
-        'Bearer ${_authenticatedUser.token}';
+    imageUploadRequest.headers['Authorization'] = 'Bearer ${_authenticatedUser.token}';
 
     try {
       final streamedResponse = await imageUploadRequest.send();
       final response = await http.Response.fromStream(streamedResponse);
       if (response.statusCode != 200 && response.statusCode != 201) {
         print('Something went wrong');
-        print(jsonDecode(response.body));
+        print(json.decode(response.body));
         return null;
       }
       final responseData = json.decode(response.body);
@@ -101,14 +103,15 @@ mixin ProductsModel on ConnectedProductsModel {
     final uploadData = await uploadImage(image);
 
     if (uploadData == null) {
-      print('Upload Failed!');
+      print('Upload failed!');
       return false;
     }
 
     final Map<String, dynamic> productData = {
       'title': title,
       'description': description,
-      'image': 'http://hamptonhillcarpetcleaners.org.uk/pub/W18.png',
+      'image':
+          'http://hamptonhillcarpetcleaners.org.uk/pub/W18.png',
       'price': price,
       'userEmail': _authenticatedUser.email,
       'userId': _authenticatedUser.id,

@@ -204,6 +204,7 @@ aFileChooser
 --------------------------------------------------------------------------------
 async
 collection
+mime
 stream_channel
 typed_data
 utf
