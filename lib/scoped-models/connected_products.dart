@@ -78,7 +78,8 @@ mixin ProductsModel on ConnectedProductsModel {
     if (imagePath != null) {
       imageUploadRequest.fields['imagePath'] = Uri.encodeComponent(imagePath);
     }
-    imageUploadRequest.headers['Authorization'] = 'Bearer ${_authenticatedUser.token}';
+    imageUploadRequest.headers['Authorization'] =
+        'Bearer ${_authenticatedUser.token}';
 
     try {
       final streamedResponse = await imageUploadRequest.send();
@@ -110,8 +111,6 @@ mixin ProductsModel on ConnectedProductsModel {
     final Map<String, dynamic> productData = {
       'title': title,
       'description': description,
-      'image':
-          'http://hamptonhillcarpetcleaners.org.uk/pub/W18.png',
       'price': price,
       'userEmail': _authenticatedUser.email,
       'userId': _authenticatedUser.id,
@@ -137,6 +136,7 @@ mixin ProductsModel on ConnectedProductsModel {
           title: title,
           description: description,
           image: uploadData['imageUrl'],
+          imagePath: uploadData['imagePath'],
           price: price,
           location: locData,
           userEmail: _authenticatedUser.email,
@@ -157,14 +157,28 @@ mixin ProductsModel on ConnectedProductsModel {
     // });
   }
 
-  Future<bool> updateProduct(String title, String description, String image,
-      double price, LocationData locData) {
+  Future<bool> updateProduct(String title, String description, File image,
+      double price, LocationData locData) async {
     _isLoading = true;
     notifyListeners();
+    String imageUrl = selectedProduct.image;
+    String imagePath = selectedProduct.imagePath;
+    if (image != null) {
+      final uploadData = await uploadImage(image);
+
+      if (uploadData == null) {
+        print('Upload failed!');
+        return false;
+      }
+
+      imageUrl = uploadData['imageUrl'];
+      imagePath = uploadData['imagePath'];
+    }
     final Map<String, dynamic> updateData = {
       'title': title,
       'description': description,
-      'image': 'http://hamptonhillcarpetcleaners.org.uk/pub/W18.png',
+      'imageUrl': imageUrl,
+      'imagePath': imagePath,
       'price': price,
       'userEmail': selectedProduct.userEmail,
       'userId': selectedProduct.userId,
@@ -172,17 +186,18 @@ mixin ProductsModel on ConnectedProductsModel {
       'loc_lng': locData.longitude,
       'loc_address': locData.address
     };
-    return http
-        .put(
-            'https://flutter-products-d11e6.firebaseio.com/products/${selectedProduct.id}.json?auth=${_authenticatedUser.token}',
-            body: json.encode(updateData))
-        .then((http.Response reponse) {
+    try {
+      final http.Response response = await http.put(
+          'https://flutter-products-d11e6.firebaseio.com/products/${selectedProduct.id}.json?auth=${_authenticatedUser.token}',
+          body: json.encode(updateData));
+
       _isLoading = false;
       final Product updatedProduct = Product(
           id: selectedProduct.id,
           title: title,
           description: description,
-          image: image,
+          image: imageUrl,
+          imagePath: imagePath,
           price: price,
           location: locData,
           userEmail: selectedProduct.userEmail,
@@ -190,11 +205,11 @@ mixin ProductsModel on ConnectedProductsModel {
       _products[selectedProductIndex] = updatedProduct;
       notifyListeners();
       return true;
-    }).catchError((error) {
+    } catch (error) {
       _isLoading = false;
       notifyListeners();
       return false;
-    });
+    }
   }
 
   Future<bool> deleteProduct() {
@@ -236,7 +251,8 @@ mixin ProductsModel on ConnectedProductsModel {
             id: productId,
             title: productData['title'],
             description: productData['description'],
-            image: productData['image'],
+            image: productData['imageUrl'],
+            imagePath: productData['imagePath'],
             price: productData['price'],
             location: LocationData(
                 address: productData['loc_address'],
@@ -274,6 +290,7 @@ mixin ProductsModel on ConnectedProductsModel {
         description: selectedProduct.description,
         price: selectedProduct.price,
         image: selectedProduct.image,
+        imagePath: selectedProduct.imagePath,
         location: selectedProduct.location,
         userEmail: selectedProduct.userEmail,
         userId: selectedProduct.userId,
@@ -296,6 +313,7 @@ mixin ProductsModel on ConnectedProductsModel {
           description: selectedProduct.description,
           price: selectedProduct.price,
           image: selectedProduct.image,
+          imagePath: selectedProduct.imagePath,
           location: selectedProduct.location,
           userEmail: selectedProduct.userEmail,
           userId: selectedProduct.userId,
