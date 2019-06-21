@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jun 19 11:40:33 CDT 2019
+#Fri Jun 21 10:57:48 CDT 2019
 4.path=flutter_assets/LICENSE
 13.baseType=DIRECTORY
 8.set=ASSET

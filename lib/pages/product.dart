@@ -82,7 +82,7 @@ class ProductPage extends StatelessWidget {
             FadeInImage(
               image: NetworkImage(product.image),
               height: 300.0,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
               placeholder: AssetImage('assets/wandgirl.jpg'),
             ),
             Container(
