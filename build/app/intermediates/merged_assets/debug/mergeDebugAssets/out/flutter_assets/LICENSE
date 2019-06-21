@@ -10635,6 +10635,7 @@ scoped_model
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------------
 shared_preferences
+url_launcher
 
 // Copyright 2017 The Chromium Authors. All rights reserved.
 //

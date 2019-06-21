@@ -7,6 +7,7 @@
 #import <location/LocationPlugin.h>
 #import <map_view/MapViewPlugin.h>
 #import <shared_preferences/SharedPreferencesPlugin.h>
+#import <url_launcher/UrlLauncherPlugin.h>
 
 @implementation GeneratedPluginRegistrant
 
@@ -15,6 +16,7 @@
   [LocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"LocationPlugin"]];
   [MapViewPlugin registerWithRegistrar:[registry registrarForPlugin:@"MapViewPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
+  [FLTUrlLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTUrlLauncherPlugin"]];
 }
 
 @end

@@ -8,6 +8,7 @@ MERGED from C:\Users\bba42\Downloads\flutter_1st_app\android\app\src\main\Androi
 MERGED from [:location] C:\Users\bba42\Downloads\flutter_1st_app\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
 MERGED from [:shared_preferences] C:\Users\bba42\Downloads\flutter_1st_app\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:map_view] C:\Users\bba42\Downloads\flutter_1st_app\build\map_view\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:image_picker] C:\Users\bba42\Downloads\flutter_1st_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\bba42\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\e8f5b22448d2516a61bb4e9c6f8d52d7\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\bba42\.gradle\caches\transforms-1\files-1.1\appcompat-1.0.2.aar\1910e04ed52b5c1fa041188f291175d8\AndroidManifest.xml:17:1-22:12
@@ -74,6 +75,8 @@ MERGED from [:location] C:\Users\bba42\Downloads\flutter_1st_app\build\location\
 		ADDED from C:\Users\bba42\Downloads\flutter_1st_app\android\app\src\main\AndroidManifest.xml:5:23-79
 application
 ADDED from C:\Users\bba42\Downloads\flutter_1st_app\android\app\src\main\AndroidManifest.xml:13:5-40:19
+MERGED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:image_picker] C:\Users\bba42\Downloads\flutter_1st_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
 MERGED from [:image_picker] C:\Users\bba42\Downloads\flutter_1st_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\bba42\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\e8f5b22448d2516a61bb4e9c6f8d52d7\AndroidManifest.xml:7:5-20
@@ -160,6 +163,8 @@ MERGED from [:shared_preferences] C:\Users\bba42\Downloads\flutter_1st_app\build
 MERGED from [:shared_preferences] C:\Users\bba42\Downloads\flutter_1st_app\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:map_view] C:\Users\bba42\Downloads\flutter_1st_app\build\map_view\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:map_view] C:\Users\bba42\Downloads\flutter_1st_app\build\map_view\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] C:\Users\bba42\Downloads\flutter_1st_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] C:\Users\bba42\Downloads\flutter_1st_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\bba42\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\e8f5b22448d2516a61bb4e9c6f8d52d7\AndroidManifest.xml:5:5-44
@@ -244,6 +249,14 @@ MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\bba42\.g
 MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\bba42\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\d72c6d608dae7e62a079ac879961cdee\AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from C:\Users\bba42\Downloads\flutter_1st_app\android\app\src\debug\AndroidManifest.xml:6:22-64
+activity#io.flutter.plugins.urllauncher.UrlLauncherPlugin$WebViewActivity
+ADDED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] C:\Users\bba42\Downloads\flutter_1st_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-92
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from [:image_picker] C:\Users\bba42\Downloads\flutter_1st_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
 	android:name
