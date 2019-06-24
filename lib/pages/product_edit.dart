@@ -30,6 +30,7 @@ class _ProductEditPageState extends State<ProductEditPage> {
   final _priceFocusNode = FocusNode();
   final _titleTextController = TextEditingController();
   final _descriptionTextController = TextEditingController();
+  final _priceTextController = TextEditingController();
 
   Widget _buildTitleTextField(Product product) {
     if (product == null && _titleTextController.text.trim() == '') {
@@ -92,22 +93,25 @@ class _ProductEditPageState extends State<ProductEditPage> {
   }
 
   Widget _buildPriceTextField(Product product) {
+    if (product == null && _priceTextController.text.trim() == '') {
+      _priceTextController.text = '';
+    } else if (product != null && _priceTextController.text.trim() == '') {
+      _priceTextController.text = product.price.toString();
+    }
     return EnsureVisibleWhenFocused(
       focusNode: _priceFocusNode,
       child: TextFormField(
         focusNode: _priceFocusNode,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(labelText: 'Product Price'),
-        initialValue: product == null ? '' : product.price.toString(),
+        controller: _priceTextController,
+        //initialValue: product == null ? '' : product.price.toString(),
         validator: (String value) {
           // if (value.trim().length <= 0) {
           if (value.isEmpty ||
-              !RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
+              !RegExp(r'^(?:[1-9]\d*|0)?(?:[.,]\d+)?$').hasMatch(value)) {
             return 'Price is required and should be a number.';
           }
-        },
-        onSaved: (String value) {
-          _formData['price'] = double.parse(value);
         },
       ),
     );
@@ -197,7 +201,7 @@ class _ProductEditPageState extends State<ProductEditPage> {
         _titleTextController.text,
         _descriptionTextController.text,
         _formData['image'],
-        _formData['price'],
+        double.parse(_priceTextController.text.replaceFirst(RegExp(r','), '.')),
         _formData['location'],
       ).then((bool success) {
         if (success) {
@@ -225,7 +229,7 @@ class _ProductEditPageState extends State<ProductEditPage> {
         _titleTextController.text,
         _descriptionTextController.text,
         _formData['image'],
-        _formData['price'],
+        double.parse(_priceTextController.text.replaceFirst(RegExp(r','), '.')),
         _formData['location'],
       ).then((_) => Navigator.pushReplacementNamed(context, '/products')
           .then((_) => setSelectedProduct(null)));
