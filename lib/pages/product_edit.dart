@@ -251,6 +251,8 @@ class _ProductEditPageState extends State<ProductEditPage> {
             : Scaffold(
                 appBar: AppBar(
                   title: Text('Edit Booking'),
+                  elevation:
+                Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
                 ),
                 body: pageContent,
               );
