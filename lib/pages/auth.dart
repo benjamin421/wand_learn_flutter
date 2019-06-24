@@ -152,6 +152,7 @@ class _AuthPageState extends State<AuthPage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
+        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
       ),
       body: Container(
         decoration: BoxDecoration(
