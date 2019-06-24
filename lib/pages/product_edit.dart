@@ -8,6 +8,7 @@ import '../models/product.dart';
 import '../scoped-models/main.dart';
 import '../models/location_data.dart';
 import '../widgets/form_inputs/image.dart';
+import 'package:flutter/cupertino.dart';
 
 class ProductEditPage extends StatefulWidget {
   @override
@@ -121,7 +122,11 @@ class _ProductEditPageState extends State<ProductEditPage> {
     return ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
         return model.isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? Center(
+                child: Theme.of(context).platform == TargetPlatform.iOS
+                    ? CupertinoActivityIndicator()
+                    : CircularProgressIndicator(),
+              )
             : RaisedButton(
                 child: Text('Save'),
                 textColor: Colors.white,
