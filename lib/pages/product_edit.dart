@@ -9,6 +9,7 @@ import '../scoped-models/main.dart';
 import '../models/location_data.dart';
 import '../widgets/form_inputs/image.dart';
 import 'package:flutter/cupertino.dart';
+import '../widgets/ui_elements/adaptive_progress_indicator.dart';
 
 class ProductEditPage extends StatefulWidget {
   @override
@@ -123,9 +124,7 @@ class _ProductEditPageState extends State<ProductEditPage> {
       builder: (BuildContext context, Widget child, MainModel model) {
         return model.isLoading
             ? Center(
-                child: Theme.of(context).platform == TargetPlatform.iOS
-                    ? CupertinoActivityIndicator()
-                    : CircularProgressIndicator(),
+                child: AdaptivePrograssIndicator(),
               )
             : RaisedButton(
                 child: Text('Save'),
